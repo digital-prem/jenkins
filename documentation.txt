@@ -1,0 +1,17 @@
+SSH key : copy master's public key to slave nodes
+
+To enable talks between our master and slave nodes, we need to to public key (id_rsa.pub) of the master into slave's authorized_keys.
+
+First, generate the key on Master node (52.53.240.42):
+
+$ ssh-keygen -t rsa
+
+We need to copy master's ~/.ssh/id_rsa.pub and put it into our slave nodes' authorized_keys.
+
+So, on the slave node 1, issue the following command:
+
+$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxhy2b6q/nX+iMY4jyymwCEBKPPGbeG+x0OhVgoribLfDvE9ilDnzgRNnQ0deezqpiEpNQZTMn4/4kpFjHwJPMLnKTbwRW/2gu/h1GMtbYJuEzpgkezBVJCfGbOX6S+J6AYcvKDVKwOXOSPh/hezTg23Qe+Jw5IjT4O+D5halfYG2NPVF098eYBpoKjm1P4uByB9+BGPJM7avjzhv4WS5ZNTxLPVQPKX0Np7NXAju3dp6RxYHomAOOR3H90VLvc7p9IuQUv5NnjM2i1da/0B6EeUAdgB0VwsSdqNXF98QQtIsqQogb3eoERyZDEsOrXVDTNyoBV59BECEK0TlTOe7T ubuntu@ip-172-31-20-240" >> ~/.ssh/authorized_keys
+
+Do the same on slave node 2.
+
+Ref url-  https://www.bogotobogo.com/DevOps/Jenkins/Jenkins_on_EC2_setting_up_master_slaves.php
